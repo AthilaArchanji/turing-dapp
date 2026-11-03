@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Turing dApp - Votação de Projetos</title>
+  <script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 0 15px; }
+    .card { border: 1px solid #ccc; border-radius: 8px; padding: 16px; margin-bottom: 20px; }
+    .admin-card { background-color: #f9f2f4; border-color: #d9534f; display: none; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background-color: #f4f4f4; }
+    button { padding: 8px 12px; cursor: pointer; margin-right: 5px; }
+    select, input { padding: 6px; margin-right: 10px; }
+  </style>
+</head>
+<body>
+
+  <h1>Turing dApp (TUR)</h1>
+  <p><strong>Conta Conectada:</strong> <span id="userAddress">Desconectado</span> (<span id="userRole">-</span>)</p>
+  <p><strong>Status da Votação:</strong> <span id="votingStatus">Carregando...</span></p>
+
+  <!-- Painel de Votação (Usuários Comuns e Superusuários) -->
+  <div class="card" id="votePanel">
+    <h3>Votar em Projeto</h3>
+    <label for="voteCandidate">Aluno:</label>
+    <select id="voteCandidate"></select>
+
+    <label for="voteAmount">Quantidade (1 ou 2 TUR):</label>
+    <input type="number" id="voteAmount" min="1" max="2" value="1">
+
+    <button onclick="castVote()">Votar</button>
+  </div>
+
+  <!-- Painel Exclusivo para Superusuários (Owner / Professora) -->
+  <div class="card admin-card" id="adminPanel">
+    <h3>Painel de Superusuário (Owner / Professora)</h3>
+    
+    <div style="margin-bottom: 15px;">
+      <h4>Emitir Tokens (Issue Token)</h4>
+      <label for="issueCandidate">Aluno:</label>
+      <select id="issueCandidate"></select>
+
+      <label for="issueAmount">Quantidade de Turings:</label>
+      <input type="number" id="issueAmount" min="1" value="5">
+
+      <button onclick="issueTokens()">Emitir Turings</button>
+    </div>
+
+    <div>
+      <h4>Controle da Votação</h4>
+      <button onclick="setVotingStatus(true)">Ativar Votação (votingOn)</button>
+      <button onclick="setVotingStatus(false)">Pausar Votação (votingOff)</button>
+    </div>
+  </div>
+
+  <!-- Ranking de Usuários -->
+  <div class="card">
+    <h3>Ranking de Alunos (Ordem de Turings)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Posição</th>
+          <th>Codinome</th>
+          <th>Endereço</th>
+          <th>Saldo (TUR)</th>
+        </tr>
+      </thead>
+      <tbody id="rankingTableBody"></tbody>
+    </table>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
