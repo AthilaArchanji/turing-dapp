@@ -1,0 +1,23 @@
+{
+  "name": "turing-dapp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "dApp de votação de projetos com token Turing",
+  "scripts": {
+    "compile": "hardhat compile",
+    "node": "hardhat node",
+    "deploy:local": "hardhat run scripts/deploy.js --network localhost"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "^4.2.2",
+    "ethers": "^6.17.0",
+    "hardhat": "^3.21.2"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "4.9.6"
+  },
+  "overrides": {
+    "zod": "4.6.7"
+  }
+}

@@ -46,7 +46,7 @@ contract Turing is ERC20 {
         professora = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8; 
         _registerInitialUser("professora", professora);
 
-        // Inicialização dos alunos da tabela exemplo (Contas #2 a #6 do npx hardhat node)
+        // Endereços de teste dos alunos (contas #2 a #6 do npx hardhat node)
         _registerInitialUser("nome1", 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC);
         _registerInitialUser("nome2", 0x90F79bf6EB2c4f870365E785982E1f101E93b906);
         _registerInitialUser("nome3", 0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65);
